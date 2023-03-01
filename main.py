@@ -6,24 +6,29 @@ import os
 dir_path = r'C:\Users\se_ba\Desktop\watermark\sample_images'
 
 # Iterate directory 
-for path in os.listdir(dir_path):
-    print('dir_pth : ' + dir_path)
-    print('PATH : ' + path)
-    if '.jpg' in path:
+for image in os.listdir(dir_path):
+    # print('dir_pth : ' + dir_path)
+    print('Image Name : ' + image)
+    if '.jpg' in image:
         # Opening the primary image (used in background)
-        img1 = Image.open(dir_path + '\\' + path)
+        img1 = Image.open(dir_path + '\\' + image)
         width, height = img1.size
         print('IMAGE SIZE : ' + str(width) + ', ' + str(height))
         # Opening the secondary image (overlay image)
-        img2 = Image.open(r'C:\Users\se_ba\Desktop\watermark\Fiverr Watermark.png')
+        img2 = Image.open(r'C:\Users\se_ba\Desktop\watermark\Fiverr Watermark 4000x4000.png')
         
+        print('Image 2 size: ' + str(img2.size))
+        
+        # img2 = img2.resize(img1.size)
+
+        print('AFTER Image 2 size: ' + str(img2.size))
+
         # Pasting img2 image on top of img1 
-        # starting at coordinates (0, 0)
-        img1.paste(img2, (0,0), mask = img2)
+        img1.paste(img2, box=None, mask = img2)
         
 
         # Displaying the image
         # img1.show()
-        list = path.split('.')
-        print(list)
-        img1.save(dir_path + '\\test\\' + list[0] + '.jpg')
+        list = image.split('.')
+        # print(list)
+        img1.save(dir_path + '\\test\\' + image) 
