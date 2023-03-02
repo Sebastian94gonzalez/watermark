@@ -1,9 +1,10 @@
 from PIL import Image
 import os
 
-# folder_path = "C:\Users\se_ba\Desktop\watermark"
-# folder path
-dir_path = r'C:\Users\se_ba\Desktop\watermark\sample_images'
+# https://pillow.readthedocs.io/en/stable/reference/Image.html
+
+# dir_path = r'C:\Users\se_ba\Desktop\watermark\sample_images'
+dir_path = r'D:\MADRIGUERA\01 MADRIGUERA STUDIO\01 FIVERR\WATERMARK'
 
 # Iterate directory 
 for image in os.listdir(dir_path):
@@ -15,7 +16,8 @@ for image in os.listdir(dir_path):
         width, height = img1.size
         print('IMAGE SIZE : ' + str(width) + ', ' + str(height))
         # Opening the secondary image (overlay image)
-        img2 = Image.open(r'C:\Users\se_ba\Desktop\watermark\Fiverr Watermark 4000x4000.png')
+        # img2 = Image.open(r'C:\Users\se_ba\Desktop\watermark\Fiverr Watermark 4000x4000.png')
+        img2 = Image.open(r'D:\MADRIGUERA\01 MADRIGUERA STUDIO\01 FIVERR\WATERMARK\Resources\Fiverr Watermark 4000x4000.png')
         
         print('Image 2 size: ' + str(img2.size))
         
@@ -31,4 +33,5 @@ for image in os.listdir(dir_path):
         # img1.show()
         list = image.split('.')
         # print(list)
-        img1.save(dir_path + '\\test\\' + image) 
+        # img1.save(dir_path + '\\test\\' + image) 
+        img1.save(dir_path + image)
