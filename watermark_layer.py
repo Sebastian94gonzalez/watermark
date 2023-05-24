@@ -5,7 +5,11 @@ import os
 
 # https://pillow.readthedocs.io/en/stable/reference/Image.html
 
-dir_path = input("Enter filename: ")
+print('Datos importantes:')
+print(' - Tener el nombre del watermak como: \'Fiverr Watermark 4000x4000.png\' y que este adentro del folder')
+print(' - Todas la imagenes adentro del folder')
+print(' - No puede haber nada mas adentro del folder')
+dir_path = input("Copiar/Pegar folder path aqui: ")
 
 def start():
     # Iterate directory 
