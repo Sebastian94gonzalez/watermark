@@ -17,7 +17,7 @@ def start(dir_path):
     for image in os.listdir(dir_path):
         # print('dir_pth : ' + dir_path)
         print('Image Name : ' + image)
-        if ('.png' or '.jpg' in image) and os.path.isfile(dir_path + '\\' + image):
+        if '.png' in image and image != 'MadrigueraWatermark_4000x4000.png':
             
             # Opening the primary image (used in background)
             img1 = PILImage.open(dir_path + '\\' + image)
@@ -29,7 +29,7 @@ def start(dir_path):
                 # Running in a bundle
                 bundle_dir = sys._MEIPASS
             else:
-                # Running in a normal Python IDE
+                # Running in a normal Python environment
                 bundle_dir = os.path.dirname(os.path.abspath(__file__))
 
             img2_path = os.path.join(bundle_dir, 'MadrigueraWatermark_4000x4000.png')
@@ -46,15 +46,15 @@ def start(dir_path):
 
             # print(pngSplit)
             # Save Image
-            imageNameNoExtension = image[0:len(image) - len(pngSplit[1])]
+            imageNameNoExtension = image[0:len(image) - len(pngSplit[1]) - 1]
             print(imageNameNoExtension)
-            img1.save(dir_path + '\\' + imageNameNoExtension + '_ForRevision.' + pngSplit[-1]) 
+            img1.save(dir_path + '\\' + imageNameNoExtension + '_ForRevision.' + pngSplit[1]) 
             # img1.save(dir_path + '\\' + pngSplit[0] + '_ForRevision.' + pngSplit[1]) 
             
 # Set up GUI
 window = Tk()
 Label(window
-      , text='IMPORTANT NOTES:\n - All image must be within the same folder\n - All images to be watermarked must be of \'.jpg\' OR \'.png\'format'
+      , text='IMPORTANT NOTES:\n - All image must be within the same folder\n - All images to be watermarked must be of \'.jpg\' format'
       , font=('Aerial 14'),).pack()
 
 # Get screen width and height
@@ -62,7 +62,7 @@ screen_width = window.winfo_screenwidth()
 screen_height = window.winfo_screenheight()
 
 # Set window size
-window_width = 600
+window_width = 500
 window_height = 150
 
 # Calculate x and y offsets to center the window
